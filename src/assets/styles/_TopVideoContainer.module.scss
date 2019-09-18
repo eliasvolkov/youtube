@@ -1,3 +1,8 @@
+@import "smart-grid.scss";
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
 .container {
   @include wrapper();
   position: relative;
@@ -13,16 +18,15 @@
 
   .row {
     @include row-flex();
-
-    .card-container {
-      @include col();
-      @include size(4);
-      @include size-lg(4.8);
-      @include size-md(6);
-      @include size-sm(8);
-      @include size-xs(24);
-
-      margin-bottom: 10px;
-    }
   }
+}
+.cardContainer {
+  @include col();
+  @include size(4);
+  @include size-lg(4.8);
+  @include size-md(6);
+  @include size-sm(8);
+  @include size-xs(24);
+
+  margin-bottom: 10px;
 }
