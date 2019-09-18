@@ -7,6 +7,7 @@ interface API {
   openVideo(id: string): Promise<object[]>;
 }
 
+// there's some error with this.api_key
 export default class YouTube implements API {
   api_key: string;
   api_key1: string;
@@ -25,7 +26,7 @@ export default class YouTube implements API {
 
   async getVideos(): Promise<object[]> {
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cstatistics&chart=mostPopular&maxResults=35&regionCode=US&key=${this.api_key}`
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cstatistics&chart=mostPopular&maxResults=35&regionCode=US&key=AIzaSyAqO8_RkQkvaQ_s3th0qlRYB-0oRmsSIAo`
     );
     const videos = await response.json();
     return videos.items;
