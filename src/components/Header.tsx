@@ -1,8 +1,17 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import "../assets/styles/_Header.scss";
 export interface IHeaderProps {}
 
-export default class Header extends React.Component<IHeaderProps> {
+class Header extends React.Component<IHeaderProps> {
+  state = {
+    title: ""
+  };
+
+  onChangeInput = (e: any) => {
+    this.setState({ title: e.target.value });
+  };
+
   public render() {
     return (
       <React.Fragment>
@@ -21,8 +30,8 @@ export default class Header extends React.Component<IHeaderProps> {
                   type="text"
                   className="searchInput"
                   placeholder="Введите запрос"
-                  //   onChange={this.onChangeInput}
-                  //   value={this.state.title}
+                  onChange={this.onChangeInput}
+                  value={this.state.title}
                 />
                 <button className="searchBtn">
                   <i className="fa fa-search" />
@@ -41,3 +50,5 @@ export default class Header extends React.Component<IHeaderProps> {
     );
   }
 }
+
+export default connect(null)(Header);
