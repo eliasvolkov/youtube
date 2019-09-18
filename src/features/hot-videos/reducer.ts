@@ -1,11 +1,10 @@
 import { fetchVideos } from "./routine";
-
-// interface IState{
-//   data: object[],
-//   loading: boolean,
-//   error: object,
-// }
-const initialState = {
+interface State {
+  data: any;
+  loading: boolean;
+  error: any;
+}
+const initialState: State = {
   data: [],
   loading: false,
   error: null
