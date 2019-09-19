@@ -2,9 +2,9 @@ interface API {
   api_key: string;
   api_key1: string;
 
-  findVideos(title: string): Promise<object[]>;
+  findVideos(title: string): any;
   getVideos(): Promise<object[]>;
-  openVideo(id: string): Promise<object[]>;
+  openVideo(id: string): any;
 }
 
 // there's some error with this.api_key
@@ -32,7 +32,7 @@ export default class YouTube implements API {
     return videos.items;
   }
 
-  async openVideo(id: string): Promise<object[]> {
+  async openVideo(id: string) {
     const response = await fetch(
       `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${this.api_key}&part=snippet,contentDetails,statistics,status`
     );
