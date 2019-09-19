@@ -1,7 +1,11 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { Link, withRouter, RouteComponentProps } from "react-router-dom";
+import { findVideoByTitle } from "../features/find-videos/routine";
 import "../assets/styles/_Header.scss";
-export interface IHeaderProps {}
+export interface IHeaderProps extends RouteComponentProps {
+  findVideoByTitle(title: string): any;
+}
 
 class Header extends React.Component<IHeaderProps> {
   state = {
@@ -12,19 +16,27 @@ class Header extends React.Component<IHeaderProps> {
     this.setState({ title: e.target.value });
   };
 
+  onSubmitForm = (e: any) => {
+    this.props.findVideoByTitle(this.state.title);
+    this.props.history.push("/videos");
+    e.preventDefault();
+  };
+
   public render() {
     return (
       <React.Fragment>
         <header className="header">
           <div className="logo">
-            <img
-              className="img"
-              src="https://raw.githubusercontent.com/eliasvolkov/youtube-clone/master/src/components/Header/di-U4RRNM.png"
-              alt="logo"
-            />
+            <Link to="/">
+              <img
+                className="img"
+                src="https://raw.githubusercontent.com/eliasvolkov/youtube-clone/master/src/components/Header/di-U4RRNM.png"
+                alt="logo"
+              />
+            </Link>
           </div>
           <div className="search">
-            <form className="form">
+            <form className="form" onSubmit={this.onSubmitForm}>
               <div className="inputGroup">
                 <input
                   type="text"
@@ -51,4 +63,9 @@ class Header extends React.Component<IHeaderProps> {
   }
 }
 
-export default connect(null)(Header);
+export default withRouter(
+  connect(
+    null,
+    { findVideoByTitle }
+  )(Header)
+);
