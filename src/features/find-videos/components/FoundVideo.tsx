@@ -16,7 +16,7 @@ export const FoundVideo: React.FC<Props> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.styles}>
+      <div className={styles.card}>
         <div className={styles.img}>
           <img src={img} />
         </div>
