@@ -16,7 +16,7 @@ export const reducer = (state = initialState, action: any) => {
     case findVideoByTitle.TRIGGER:
       return { ...state, loading: true };
     case findVideoByTitle.SUCCESS:
-      return { ...state, data: action.payload };
+      return { ...state, data: action.payload, loading: false };
     case findVideoByTitle.FAILURE:
       return { ...state, error: action.payload };
     default:
