@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import { fetchVideos } from "../routine";
 import { TopVideo } from "./TopVideo";
 import styles from "../../../assets/styles/_TopVideoContainer.module.scss";
+import { Spinner } from "../../../components/Spinner";
 
 export interface ITopVideoContainerProps {
-  readonly topVideos: object[];
+  readonly topVideos: [object];
   fetchVideos(): any;
+  loading: boolean;
 }
 
 type IVideo = {
@@ -18,10 +20,12 @@ class TopVideoContainer extends React.Component<ITopVideoContainerProps> {
     this.props.fetchVideos();
   }
   public render() {
-    const { topVideos } = this.props;
+    const { topVideos, loading } = this.props;
     return (
       <div>
-        {topVideos.length > 0 && (
+        {loading ? (
+          <Spinner />
+        ) : (
           <div className={styles.row}>
             {topVideos.map((video: any) => {
               return (
@@ -45,7 +49,8 @@ class TopVideoContainer extends React.Component<ITopVideoContainerProps> {
 
 const mapState2Props = (state: any) => {
   return {
-    topVideos: state.topVideos.data
+    topVideos: state.topVideos.data,
+    loading: state.topVideos.loading
   };
 };
 
