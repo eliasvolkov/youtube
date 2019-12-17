@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware, combineReducers } from "redux";
-
+//jjj
 import { Provider } from "react-redux";
 import { reducer as topVideos } from "./features/hot-videos/reducer";
 import { reducer as foundVideos } from "./features/find-videos/reducer";
